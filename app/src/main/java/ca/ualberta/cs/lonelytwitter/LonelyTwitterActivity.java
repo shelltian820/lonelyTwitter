@@ -1,5 +1,13 @@
 package ca.ualberta.cs.lonelytwitter;
 
+/*
+Copyright (c) 2016 Team 7, CMPUT301, University of Alberta - All Rights Reserved.
+You may use, distribute, and copy all or parts of this code under terms and conditions of
+University of Alberta and the Code of Student Behavior.
+You may find the copy of the license at http://www.github.com/Team7
+For further information, contact me at stian3@ualberta.ca
+*/
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -24,9 +32,20 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * This is the main view class of LonelyTwitter project.
+
+ <p>It handles all user interactions as well as file manipulations.
+
+ All the files are stored in the form of "json" files stored in Emulator,
+ accessible from Android Device Monitor</p>
+ *@since 1.0
+ * @author watts1
+ * @see NormalTweet
+ */
 public class LonelyTwitterActivity extends Activity {
 
-	private static final String FILENAME = "file.sav";
+    private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
 
@@ -34,7 +53,6 @@ public class LonelyTwitterActivity extends Activity {
 
 	private ArrayAdapter<Tweet> adapter;
 
-	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,7 +99,13 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
-	private void loadFromFile() {
+
+    /**
+     * This method loads tweets into the ListView in main activity with ArrayAdapter from
+     * file.sav
+     *
+     */
+    private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
 			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -101,7 +125,10 @@ public class LonelyTwitterActivity extends Activity {
 			throw new RuntimeException();
 		}
 	}
-	
+
+    /**
+     * This method saves information in ListView of main activity into file.sav
+     */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,

@@ -1,10 +1,15 @@
 package ca.ualberta.cs.lonelytwitter;
 
 /**
- * Created by watts1 on 9/13/16.
+ * The type Normal tweet.
  */
 public class NormalTweet extends Tweet implements Tweetable {
 
+    /**
+     * Instantiates a new Normal tweet.
+     *
+     * @param message the message of tweet
+     */
     public NormalTweet(String message){
         super(message);
     }
