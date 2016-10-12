@@ -5,6 +5,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.robotium.solo.Solo;
 
@@ -70,6 +71,17 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2<
 
         solo.goBack();
         solo.assertCurrentActivity("Wrong Activity", LonelyTwitterActivity.class);
+
+        final TextView passedData = (TextView) solo.getView(R.id.tweetText);
+        assertEquals("Test Tweet!", passedData.getText());
+
+        solo.assertCurrentActivity("Wrong Activity", EditTweetActivity.class);
+
+        solo.goBack();
+
+        solo.assertCurrentActivity("Wrong Activity", LonelyTwitterActivity.class);
+
+        solo.clickOnButton("Clear");
 
     }
 
